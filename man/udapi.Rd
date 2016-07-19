@@ -9,7 +9,8 @@
 a client library for Urban Dictionary's API
 }
 \seealso{
-\code{\link{get_term}} for retrieving definitions for a specific term, and
-\code{\link{random_term}} for random definitions of random terms.
+\code{\link{get_term}} for retrieving definitions for a specific term,
+\code{\link{random_term}} for random definitions of random terms, and \code{\link{get_tags}} for
+tags associated with a term.
 }
 
