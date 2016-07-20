@@ -21,6 +21,10 @@ By participating in this project you agree to abide by its terms.
 
 ###Installation
 
+The CRAN version can be retrieved with:
+
+    install.packages("udapi")
+    
 The latest version can be obtained via:
 
     devtools::install_github("ironholds/udapi")
