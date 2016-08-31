@@ -1,16 +1,16 @@
 #' @export
+print.udapi <- function(x, ...) {
+  cat(format(x), sep = "\n\n")
+  invisible(x)
+}
+
+#' @export
 format.udapi <- function(x, ...) {
   thumbs_and_definition <-
     md_itemize(paste0("(+", x$thumbs_up, "/-", x$thumbs_down, ") ", x$definition))
   examples <-
     md_quote(x$example, "    > ")
-  paste0(thumbs_and_definition, "\n\n", examples)
-}
-
-#' @export
-print.udapi <- function(x, ...) {
-  cat(format(x), sep = "\n")
-  invisible(x)
+  merge_def_and_examples(thumbs_and_definition, examples)
 }
 
 md_itemize <- function(x, bullet = "* ") {
@@ -23,6 +23,10 @@ md_quote <- function(x, quote = "> ") {
   xl <- strsplit(x, "\n")
   xlq <- lapply(xl, md_itemize, bullet = quote)
   lapply(xlq, paste, collapse = "\n\n")
+}
+
+merge_def_and_examples <- function(definition, examples) {
+  paste0(definition, ifelse(examples == "", "", "\n"), examples)
 }
 
 parskip <- function(x) {
