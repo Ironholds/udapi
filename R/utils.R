@@ -1,5 +1,5 @@
 #'@importFrom httr user_agent stop_for_status GET content
-ud_query <- function(params, term = TRUE, ...){
+ud_query <- function(params, ...){
   url <- paste0("http://api.urbandictionary.com/v0/", params)
 
   result <- httr::GET(url, httr::user_agent("udapi - https://github.com/Ironholds/udapi"))
@@ -8,13 +8,11 @@ ud_query <- function(params, term = TRUE, ...){
   if("result_type" %in% names(output) && output$result_type == "no_results"){
     stop("No results found")
   }
-  if(term){
-    return(output$list)
-  }
   return(output)
 }
 
-clean_results <- function(results){
+clean_results <- function(output){
+  results <- output$list
   output_names <- names(results[[1]])
   output <-  data.frame(matrix(unlist(results), nrow = length(results), byrow = TRUE),
                         stringsAsFactors = FALSE)
