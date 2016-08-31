@@ -22,3 +22,10 @@ clean_results <- function(output){
   output$thumbs_down <- as.numeric(output$thumbs_down)
   return(output)
 }
+
+clean_tags <- function(term, result) {
+  if(!length(result$tags)){
+    stop("There are no tags associated with this term.")
+  }
+  return(data.frame(term = term, tags = unique(unlist(result$tags)), stringsAsFactors = FALSE))
+}
