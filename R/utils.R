@@ -11,15 +11,26 @@ ud_query <- function(params, ...){
   return(output)
 }
 
-clean_results <- function(output){
-  results <- output$list
+clean_results <- function(full_results){
+  output <- full_results_to_data_frame(full_results)
+  clean_output <- clean_results_data_frame(output)
+  return(clean_output)
+}
+
+full_results_to_data_frame <- function(full_results) {
+  results <- full_results$list
   output_names <- names(results[[1]])
   output <-  data.frame(matrix(unlist(results), nrow = length(results), byrow = TRUE),
                         stringsAsFactors = FALSE)
   names(output) <- output_names
-  output$thumbs_up <- as.numeric(output$thumbs_up)
-  output$defid <- as.numeric(output$defid)
-  output$thumbs_down <- as.numeric(output$thumbs_down)
+  return(output)
+}
+
+clean_results_data_frame <- function(output) {
+  numerics <- names(output) %in% c("thumbs_up", "defid", "thumbs_down")
+  output[numerics] <- lapply(output[numerics], as.numeric)
+  output[!numerics] <- lapply(output[!numerics], gsub, pattern = "\r", replacement = "", fixed = TRUE)
+  output[!numerics] <- lapply(output[!numerics], gsub, pattern = "\n+", replacement = "\n")
   return(output)
 }
 
