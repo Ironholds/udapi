@@ -14,7 +14,7 @@ ud_query <- function(params, ...){
 clean_results <- function(full_results){
   output <- full_results_to_data_frame(full_results)
   clean_output <- clean_results_data_frame(output)
-  return(clean_output)
+  return(as_udapi(clean_output))
 }
 
 full_results_to_data_frame <- function(full_results) {
@@ -32,6 +32,11 @@ clean_results_data_frame <- function(output) {
   output[!numerics] <- lapply(output[!numerics], gsub, pattern = "\r", replacement = "", fixed = TRUE)
   output[!numerics] <- lapply(output[!numerics], gsub, pattern = "\n+", replacement = "\n")
   return(output)
+}
+
+as_udapi <- function(clean_output) {
+  class(clean_output) <- c("udapi", class(clean_output))
+  return(clean_output)
 }
 
 clean_tags <- function(term, result) {
