@@ -10,3 +10,9 @@ test_that("random content can be retrieved", {
   expect_that(ncol(result), equals(10))
   expect_that(nrow(result), equals(10))
 })
+
+test_that("tags can be retrieved", {
+  result <- get_tags("love")
+  expect_equal(names(result), c("term", "tags"))
+  expect_gt(nrow(result), 4)
+})

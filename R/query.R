@@ -59,9 +59,6 @@ random_term <- function(...){
 #'@export
 get_tags <- function(term, ...){
   url <- paste0("define?term=", curl::curl_escape(term))
-  result <- ud_query(params = url, term = FALSE, ...)
-  if(!length(result$tags)){
-    stop("There are no tags associated with this term.")
-  }
-  return(data.frame(term = term, tags = unique(unlist(result$tags)), stringsAsFactors = FALSE))
+  result <- ud_query(params = url, ...)
+  return(clean_tags(term, result))
 }
