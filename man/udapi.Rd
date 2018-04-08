@@ -4,6 +4,7 @@
 \name{udapi}
 \alias{udapi}
 \alias{udapi-package}
+\alias{udapi-package}
 \title{Urban Dictionary API client}
 \description{
 a client library for Urban Dictionary's API
@@ -13,4 +14,3 @@ a client library for Urban Dictionary's API
 \code{\link{random_term}} for random definitions of random terms, and \code{\link{get_tags}} for
 tags associated with a term.
 }
-

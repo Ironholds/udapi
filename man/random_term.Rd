@@ -22,4 +22,3 @@ entries <- random_term()
 \code{\link{get_term}} for retrieving a set of definitions for
 a specific term.
 }
-

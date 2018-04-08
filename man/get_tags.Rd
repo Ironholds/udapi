@@ -27,4 +27,3 @@ fade_definitions <- get_tags("dab")
 \code{\link{get_term}} for retrieving a set of \emph{definitions} for
 a specific term.
 }
-
