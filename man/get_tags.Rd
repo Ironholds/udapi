@@ -18,11 +18,6 @@ a data.frame containing the term and the top 10 tags associated with it.
 \code{get_tags} retrieves the tags associated
 with a particular term on Urban Dictionary.
 }
-\examples{
-# Simple example - retrieve the entry for "dab"
-fade_definitions <- get_tags("dab")
-
-}
 \seealso{
 \code{\link{get_term}} for retrieving a set of \emph{definitions} for
 a specific term.

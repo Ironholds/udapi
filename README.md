@@ -12,7 +12,6 @@ Exactly what it says on the tin, udapi provides a connector to the Urban Diction
 
 1. Retrieve definitions associated with a term, using `get_term`;
 2. Retrieve definitions associated with a *random* term, using `random_term`;
-3. Retrieve metadata tags associated with a term, using `get_tags`.
 
 It's a simple client because it's a simple API.
 

@@ -23,6 +23,5 @@ fade_definitions <- get_term("friendly fade")
 }
 \seealso{
 \code{\link{random_term}} for retrieving a set of random definitions
-for random terms, and \code{\link{get_tags}} for retrieving tags associated
-with a specific term.
+for random terms.
 }

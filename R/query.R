@@ -12,8 +12,7 @@
 #'fade_definitions <- get_term("friendly fade")
 #'
 #'@seealso \code{\link{random_term}} for retrieving a set of random definitions
-#'for random terms, and \code{\link{get_tags}} for retrieving tags associated
-#'with a specific term.
+#'for random terms.
 #'
 #'@importFrom curl curl_escape
 #'@export
@@ -49,19 +48,10 @@ random_term <- function(...){
 #'
 #'@return a data.frame containing the term and the top 10 tags associated with it.
 #'
-#'@examples
-#'# Simple example - retrieve the entry for "dab"
-#'fade_definitions <- get_tags("dab")
-#'
 #'@seealso \code{\link{get_term}} for retrieving a set of \emph{definitions} for
 #'a specific term.
 #'
 #'@export
 get_tags <- function(term, ...){
-  url <- paste0("define?term=", curl::curl_escape(term))
-  result <- ud_query(params = url, term = FALSE, ...)
-  if(!length(result$tags)){
-    stop("There are no tags associated with this term.")
-  }
-  return(data.frame(term = term, tags = unique(unlist(result$tags)), stringsAsFactors = FALSE))
+  .Defunct()
 }
