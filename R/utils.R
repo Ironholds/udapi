@@ -15,6 +15,12 @@ ud_query <- function(params, term = TRUE, ...){
 }
 
 clean_results <- function(results){
+  results <- lapply(results, function(x){
+    if("sound_urls" %in% names(x)){
+      x$sound_urls <- NULL
+    }
+    return(x)
+  })
   output_names <- names(results[[1]])
   output <-  data.frame(matrix(unlist(results), nrow = length(results), byrow = TRUE),
                         stringsAsFactors = FALSE)
